@@ -228,7 +228,26 @@ var utils = (function() {
                     })
                 })(start + i, i);
             }
+			
         })
+
+		setTimeout(function(){
+			if($.fn.DataTable.isDataTable(".table-query-result")) {
+				$('.table-query-result').DataTable().clear().destroy();
+			}
+			$('.table-query-result').DataTable({
+				bDestroy:true,
+				paging:false,
+				dom: 'Bfrtip',
+				buttons: [
+					'copyHtml5',
+					'excelHtml5',
+					'csvHtml5'
+				]
+			});
+		}, 5000);
+		
+
     }
 
     return {
